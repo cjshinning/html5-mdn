@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="comment" name="comment" value="I'm a text field">
+    <br/>
+    <input type="email" id="email" name="email" multiple>
+    <br/>
+    <input type="password" id="pwd" name="pwd">
+    <br/>
+    <input type="search" id="search" name="search">
+    <br/>
+    <input type="url" id="url" name="url">
+    <br/>
+    <textarea id="" cols="30" rows="10"></textarea>
+    <br/>
+    <select id="simple" name="simple">
+        <option>Banana</option>
+        <option>Cherry</option>
+        <option>Lemon</option>
+    </select>
+    <select id="groups" name="groups">
+        <optgroup label="fruits">
+            <option>Banana</option>
+            <option selected>Cherry</option>
+            <option>Lemon</option>
+        </optgroup>
+        <optgroup label="vegetables">
+            <option>Carrot</option>
+            <option>Eggplant</option>
+            <option>Potato</option>
+        </optgroup>
+    </select>
+    <br/>
+    <select id="simple" multiple id="multi" name="multi">
+        <option>Banana</option>
+        <option>Cherry</option>
+        <option>Lemon</option>
+    </select>
+    <label for="myFruit">What is your favorite fruit? (With fallback)</label>
+    <br/>
+    <input type="text" id="myFruit" name="fruit" list="fruitList">
+    <datalist id="fruitList">
+    <label for="suggestion">or pick a fruit</label>
+    <select id="suggestion" name="altFruit">
+        <option>Apple</option>
+        <option>Banana</option>
+        <option>Blackberry</option>
+        <option>Blueberry</option>
+        <option>Lemon</option>
+        <option>Lychee</option>
+        <option>Peach</option>
+        <option>Pear</option>
+    </select>
+    </datalist>
+    <br/>
+    <input type="number" name="age" id="age" min="1" max="10" step="2">
+    <br/>
+    <input type="range" name="beans" id="beans" min="0" max="500" step="10">
+    <br/>
+    <input type="datetime-local" name="datetime" id="datetime">
+    <br/>
+    <input type="image" alt="Click me!" src="./banner.jpg" width="80" height="30" />
+    <br/>
+    <progress max="100" value="75">57/100</progress>
+    <br/>
+    <meter min="0" max="100" value="75" low="33" high="66" optimum="50">75</meter>
+</body>
+</html>

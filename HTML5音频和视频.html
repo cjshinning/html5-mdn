@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 1、audio元素在文档中表示音频内容。 -->
+    <!-- <audio src="http://developer.mozilla.org/@api/deki/files/2926/=AudioTest_(1).ogg" controls>
+        Your browser does not support the <code>audio</code> element.
+    </audio> -->
+
+    <!-- 2、HTML <video> 元素 用于在HTML或者XHTML文档中嵌入媒体播放器，用于支持文档内的视频播放。 -->
+    <video id="myVideo" controls poster="./banner.jpg" width="300">
+        <source src="//video.37wanimg.com/wcyx/201909/02_02.mp4">
+        <p>Your browser doesn't support HTML5 video.</p>
+    </video>
+    <button id="cancelPlay">开始播放</button>
+    <script>
+        var myVideo = document.getElementById('myVideo'),
+            cancelPlay = document.getElementById('cancelPlay');
+        
+        cancelPlay.addEventListener('click', function(){
+            myVideo.play();
+        }, false)
+    </script>
+</body>
+</html>
