@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewpoint" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+        <meta name="keyword" content="async,await">
+        <meta name="description" content="async和await">
+        <title>async和await</title>
+    </head>
+    <body>
+        <h2>async和await</h2>
+        <script>
+            // async function testAsync(){
+            //     return 'hello async';
+            // }
+            // // const result = testAsync();
+            // // console.log(result);    //Promise {<resolved>: "hello async"}
+            // testAsync().then(v => {
+            //     console.log(v); //hello async,testAsync如果没有返回值则是undefined
+            // })
+
+            // function getSomething(){
+            //     return 'something';
+            // }
+
+            // async function testAsync(){
+            //     return Promise.resolve('hello Async');
+            // }
+
+            // async function test(){
+            //     const v1 = await getSomething();
+            //     const v2 = await testAsync();
+            //     console.log(v1, v2);
+            // }
+
+            // test(); //something hello Async
+
+            // function takeLongTime(){
+            //     return new Promise(resolve => {
+            //         setTimeout(() => {
+            //             resolve('long_time_value')
+            //         },1000)
+            //     })
+            // }
+
+            // takeLongTime().then(v => {
+            //     console.log('got', v);
+            // })
+
+            // function takeLongTime(){
+            //     return new Promise(resolve => {
+            //         setTimeout(() => {
+            //             resolve('long_time_value')
+            //         },1000)
+            //     })
+            // }
+
+            // async function test(){
+            //     const v = await takeLongTime();
+            //     console.log(v);
+            // }
+
+            // test();
+
+            // function takeLongTime(n){
+            //     return new Promise(resolve => {
+            //         setTimeout(() => {
+            //             resolve(n + 200);
+            //         }, n);
+            //     })
+            // }
+
+            // function step1(n){
+            //     console.log(`step1 with ${n}`);
+            //     return takeLongTime(n);
+            // }
+
+            // function step2(n){
+            //     console.log(`step2 with ${n}`);
+            //     return takeLongTime(n);
+            // }
+
+            // function step3(n){
+            //     console.log(`step3 with ${n}`);
+            //     return takeLongTime(n);
+            // }
+            
+            // // 普通then
+            // // function doIt(){
+            // //     console.time('doIt');
+            // //     const time1 = 300;
+            // //     step1(time1)
+            // //         .then(time2 => step2(time2))
+            // //         .then(time3 => step3(time3))
+            // //         .then(result => {
+            // //             console.log(`result is ${result}`);
+            // //             console.timeEnd('doIt');
+            // //         })
+            // // }
+
+            // // ansync/await
+            // async function doIt(){
+            //     console.time('doIt');
+            //     const time1 = 300;
+            //     const time2 = await step1(time1);
+            //     const time3 = await step2(time2);
+            //     const result = await step3(time3);
+            //     console.log(`result is ${result}`);
+            //     console.timeEnd('doIt');
+            // }
+
+            // doIt();
+            // // step1 with 300
+            // // step2 with 500
+            // // step3 with 700
+            // // result is 900
+            // // doIt: 1505.482421875ms
+
+            // function takeLongTime(n){
+            //     return new Promise(resolve => {
+            //         setTimeout(() => {
+            //             resolve(n + 200);
+            //         }, n);
+            //     })
+            // }
+
+            // function step1(n){
+            //     console.log(`step1 with ${n}`);
+            //     return takeLongTime(n);
+            // }
+
+            // function step2(m, n){
+            //     console.log(`step2 with ${m} and ${n}`);
+            //     return takeLongTime(m + n);
+            // }
+
+            // function step3(k, m, n){
+            //     console.log(`step3 with ${k}, ${m} and ${n}`);
+            //     return takeLongTime(k + m + n);
+            // }
+            
+            // // ansync/await
+            // // async function doIt(){
+            // //     console.time('doIt');
+            // //     const time1 = 300;
+            // //     const time2 = await step1(time1);
+            // //     const time3 = await step2(time1, time2);
+            // //     const result = await step3(time1, time2, time3);
+            // //     console.log(`result is ${result}`);
+            // //     console.timeEnd('doIt');
+            // // }
+
+            // // promise
+            // function doIt(){
+            //     console.time('doIt');
+            //     const time1 = 300;
+            //     step1(time1)
+            //         .then(time2 => {
+            //             return step2(time1, time2)
+            //                 .then(time3 => [time1, time2, time3]);
+            //         })
+            //         .then(times => {
+            //             const [time1, time2, time3] = times;
+            //             return step3(time1, time2, time3);
+            //         })
+            //         .then(result => {
+            //             console.log(`result is ${result}`);
+            //             console.timeEnd('doIt');
+            //         })
+            // }
+
+            // doIt();
+            // // step1 with 300
+            // // step2 with 300 and 500
+            // // step3 with 300, 500 and 1000
+            // // result is 2000
+            // // doIt: 2908.426025390625ms
+
+            // function resolveAfter2Seconds(){
+            //     return new Promise(resolve => {
+            //         setTimeout(() => {
+            //             resolve('resolved');
+            //         }, 2000);
+            //     })
+            // }
+
+            // async function asyncCall(){
+            //     console.log('calling');
+            //     const result = await resolveAfter2Seconds();
+            //     console.log(result);
+            // }
+
+            // asyncCall();
+
+            var resolveAfter2Seconds = function(){
+                console.log('starting slow promise');
+                return new Promise(resolve => {
+                    setTimeout(() => {
+                        resolve('slow');
+                        console.log('slow promise is done');
+                    }, 10000);
+                })
+            }
+
+            var resolveAfter1Seconds = function(){
+                console.log('starting fast promise');
+                return new Promise(resolve => {
+                    setTimeout(() => {
+                        resolve('fast');
+                        console.log('fast promise is done');
+                    }, 5000)
+                })
+            }
+            
+            // 顺序执行
+            var sequentialStart = async function(){
+                console.log('==SEQUENTIAL START==');
+
+                const slow = await resolveAfter2Seconds();
+                console.log(slow);
+
+                const fast = await resolveAfter1Seconds();
+                console.log(fast);
+            }
+
+            // sequentialStart();
+            
+            // 同时执行
+            var concurrentStart = async function(){
+                console.log('==CONCURRENT START with await==');
+
+                const slow = resolveAfter2Seconds();
+                const fast = resolveAfter1Seconds();
+
+                console.log(await slow);
+                console.log(await fast);
+            }
+
+            concurrentStart();
+        </script>
+    </body>
+</html>
